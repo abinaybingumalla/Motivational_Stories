@@ -1,6 +1,6 @@
 # Motivational_Stories 
 
-A simple Android App built using Ionic , AngularJS and NodeJS <br/>
+A simple Android App built using <b>Ionic , AngularJS and NodeJS </b> <br/>
 
 <p>Everyone needs some inspiration, and these motivational stories,quotes will give you the edge you need to create your success. So read on and let them inspire you.</p>
 
