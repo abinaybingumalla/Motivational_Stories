@@ -1,0 +1,28 @@
+<ion-view view-title="Motivational Stories">
+        
+      <div class="bar bar-subheader bar-light item-input-inset">
+        <label class="item-input-wrapper"> 
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" ng-model="query" placeholder="Search by Story title">
+        </label>
+      </div>
+    
+      <ion-content class="has-subheader">
+        
+          <ion-list>             
+            <ion-item ng-repeat="item in stories | filter:{'title':query} " class="item-text-wrap" href="#/app/list/{{item.id}}" >
+                
+                <h2 ng-style="hStyle">{{item.title}} </h2>
+                <p ng-style="pStyle">{{item.description[0].paragraph | limitTo:150}}
+                {{item.description[0].paragraph.length > 150 ? '&hellip;': ''}}</p>
+                
+                <!--<p>{{item.description | limitTo:150}}
+                {{item.description.length > 150 ? '&hellip;': ''}}</p>-->
+                <ion-option-button class="button-balanced icon ion-plus-circled"
+                    ng-click="addFavorite({{item.id}})">
+                </ion-option-button>
+            </ion-item>
+              
+          </ion-list>
+      </ion-content>
+   </ion-view>

@@ -1,0 +1,28 @@
+<ion-view view-title="Know Yourself">
+    <ion-content>
+        <h3 class="center">50 Thought Provoking Questions About Life</h3>
+    </ion-content>
+    <div ng-if="cards.active">
+
+        <td-cards>
+
+            <td-card id="td-card-title" ng-repeat="card in cards.active" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)">
+
+                <div class="title">
+                    <span>
+                        {{ card.question }}
+                    </span>
+                </div>
+            </td-card>
+            <!-- *************************
+            End Card
+            - 'drag' is set to false. The user cannot drag it.
+            - 'refreshCards()' reloads all cards that have NOT been discarded.
+          ************************* -->
+            <td-card id="end-card" drag="false">
+                <i class="icon ion-ios-refresh" ng-click="refreshCards()"></i>
+            </td-card>
+        </td-cards>
+    </div>
+
+</ion-view>

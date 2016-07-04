@@ -1,0 +1,24 @@
+<ion-popover-view>
+    <ion-content>
+        <div class="list">
+            <a class="item" ng-click="addFavorite()" >
+                <i class="icon icon-left ion-android-favorite-outline"></i>   Add to Favorites
+            </a>            
+            <div class="row">
+                <div class="col">
+                    <button class="button button-clear button-dark" ng-click="startSpeak()">
+                                <i class="icon icon-left ion-radio-waves"></i> Speak
+                    </button>                     
+                </div>
+                <div class="col">
+                    <button class="button button-clear button-assertive" ng-click="stopSpeak()">
+                                <i class="icon icon-left ion-stop"></i> Stop
+                    </button>
+                </div>
+            </div>
+            <a class="item" ng-click="shareStory()" > 
+                <i class="icon icon-left ion-android-share"></i> Share
+            </a>
+        </div>
+    </ion-content>
+</ion-popover-view>

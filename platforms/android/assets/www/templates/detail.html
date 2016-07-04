@@ -1,0 +1,27 @@
+<ion-view view-title="Full Story ">
+
+    <ion-nav-buttons side="secondary">
+        <div class="buttons">
+            <button class="button button-icon icon ion-more" ng-click="openPopover($event)"></button>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-content ng-model="story" on-swipe-right="prevStory()" on-swipe-left="nextStory()">
+        <ion-list class="list-inset">
+            <ion-item class="item-text-wrap">
+                <h2 class="title center">{{story.title}}</h2>
+                <br/>
+                <p ng-repeat="des in story.description" ng-style="pStyle">{{des.paragraph}}</br>
+                    </br>
+                </p>
+
+            </ion-item>
+
+            <div class="button-bar button-clear">
+                <a class="button icon ion-chevron-left  button-positive" ng-click="prevStory()"></a>
+                <a class="button icon ion-share button-positive" ng-click="shareStory()"></a>
+                <a class="button icon ion-chevron-right button-positive" ng-click="nextStory()"></a>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-view>

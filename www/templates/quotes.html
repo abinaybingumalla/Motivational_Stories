@@ -1,0 +1,9 @@
+<ion-view view-title="Motivational Quotes">
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="item in quotes" class="item-text-wrap" href="#/app/quotes/{{item.id}}">
+                <h2 ng-style="hStyle">{{item.title}}</h2>             
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

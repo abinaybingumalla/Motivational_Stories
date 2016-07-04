@@ -1,0 +1,31 @@
+<ion-view view-title="Quotes">
+    <ion-content ng-model="quotations">
+        <ion-list class="list-inset" ng-repeat="item in quotations.description">
+            <ion-item class="item-text-wrap">               
+                
+                    <blockquote>
+                    <div class="row">
+                        <div class="col col-90">
+                            <h2 ng-style="hStyle">{{item.paragraph}}</h2>
+                        </div>
+                        <div class="col ">
+                            <button class="button button-clear button-dark" ng-click="speak('{{item.paragraph}}')">
+                                <i class="icon icon-left ion-radio-waves"></i>
+                            </button> <br>
+                            <button class="button button-clear button-assertive" ng-click="speak('')">
+                                <i class="icon icon-left ion-android-hand"></i>
+                            </button>
+                        </div>
+                         
+                    </div> 
+                        <br/>
+                    <footer   ng-style="fStyle" ng-if="item.author.length > 0 "> - {{item.author}}  </footer>                                       
+                    </blockquote>
+                
+                <ion-option-button class="button-balanced icon ion-share"
+                    ng-click="shareQuote('{{item.paragraph}}','{{item.author}}')">
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

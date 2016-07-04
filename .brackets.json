@@ -1,0 +1,11 @@
+{
+    "jscodehints.detectedExclusions": [
+        "C:/Users/Jumper/Ionic/story/www/js/controllers.js",
+        "C:/Users/Jumper/Ionic/story/www/js/app.js",
+        "C:/Users/Jumper/Ionic/story/platforms/android/build/intermediates/assets/release/www/cordova_plugins.js",
+        "C:/Users/Jumper/Ionic/story/platforms/android/cordova/lib/log.js",
+        "C:/Users/Jumper/Ionic/story/platforms/android/cordova/lib/retry.js",
+        "C:/Users/Jumper/Ionic/story/platforms/android/cordova/lib/run.js",
+        "C:/Users/Jumper/Ionic/story/www/js/services.js"
+    ]
+}
