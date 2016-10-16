@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ionicframework.story371955" version="1.1.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="201018" id="com.ionicframework.story371955" version="1.1.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
@@ -31,17 +31,23 @@
     <feature name="LocalNotification">
         <param name="android-package" value="de.appplant.cordova.plugin.localnotification.LocalNotification" />
     </feature>
+    <feature name="connectivity">
+        <param name="android-package" value="com.appfeel.cordova.connectivity.Connectivity" />
+    </feature>
+    <feature name="AdMobAds">
+        <param name="android-package" value="com.appfeel.cordova.admob.AdMobAds" />
+    </feature>
     <feature name="TTS">
         <param name="android-package" value="com.wordsbaking.cordova.tts.TTS" />
         <param name="onload" value="true" />
     </feature>
     <name>Motivational Stories</name>
     <description>
-        An Ionic Framework and Cordova project.
-    </description>
+            An Ionic Framework and Cordova project.
+        </description>
     <author email="abinguma@gmail.com" href="http://example.com.com/">
-      Abinay Bingumalla
-    </author>
+            Abinay Bingumalla
+        </author>
     <content src="index.html" />
     <access origin="*" />
     <preference name="loglevel" value="DEBUG" />

@@ -431,6 +431,17 @@ angular.module('motivation.controllers', [])
 
 }])
 
+
+/*.controller('SettingsCtrl', ['$scope', '$rootscope', '$localStorage', function ($scope, $rootscope, $localStorage) {
+
+    $rootScope.fields = $localStorage.getObject('fields', '{notifychecked: true}');
+
+    $localStorage.storeObject('fields', $rootscope.fields);
+
+}])*/
+
+
+
 .filter('favoriteFilter', function () {
     return function (stories, favorites) {
         var out = [];

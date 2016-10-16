@@ -43,6 +43,14 @@
                         {
                             "xml": "<feature name=\"LocalNotification\"><param name=\"android-package\" value=\"de.appplant.cordova.plugin.localnotification.LocalNotification\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"connectivity\"><param name=\"android-package\" value=\"com.appfeel.cordova.connectivity.Connectivity\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"AdMobAds\"><param name=\"android-package\" value=\"com.appfeel.cordova.admob.AdMobAds\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -67,6 +75,14 @@
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 2
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
+                            "count": 2
                         }
                     ],
                     "/manifest/application": [
@@ -96,6 +112,10 @@
                         },
                         {
                             "xml": "<activity android:exported=\"false\" android:launchMode=\"singleInstance\" android:name=\"de.appplant.cordova.plugin.notification.ClickActivity\" android:theme=\"@android:style/Theme.NoDisplay\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:configChanges=\"keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize\" android:name=\"com.google.android.gms.ads.AdActivity\" android:theme=\"@android:style/Theme.Translucent\" />",
                             "count": 1
                         }
                     ]
@@ -145,6 +165,12 @@
             "PACKAGE_NAME": "com.ionicframework.story371955"
         },
         "de.appplant.cordova.plugin.local-notification": {
+            "PACKAGE_NAME": "com.ionicframework.story371955"
+        },
+        "cordova-connectivity-monitor": {
+            "PACKAGE_NAME": "com.ionicframework.story371955"
+        },
+        "cordova-admob": {
             "PACKAGE_NAME": "com.ionicframework.story371955"
         }
     },
@@ -253,6 +279,23 @@
                 "cordova.plugins.notification.local.core",
                 "plugin.notification.local.core"
             ]
+        },
+        {
+            "file": "plugins/cordova-connectivity-monitor/www/connectivity.js",
+            "id": "cordova-connectivity-monitor.connectivity",
+            "pluginId": "cordova-connectivity-monitor",
+            "clobbers": [
+                "window.connectivity"
+            ]
+        },
+        {
+            "file": "plugins/cordova-admob/www/admob.js",
+            "id": "cordova-admob.AdMobAds",
+            "pluginId": "cordova-admob",
+            "clobbers": [
+                "window.admob",
+                "window.tappx"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -261,6 +304,8 @@
         "cordova-plugin-x-socialsharing": "5.0.10",
         "cordova-plugin-tts": "0.2.3",
         "cordova-plugin-app-event": "1.2.0",
-        "de.appplant.cordova.plugin.local-notification": "0.8.4"
+        "de.appplant.cordova.plugin.local-notification": "0.8.4",
+        "cordova-connectivity-monitor": "1.2.2",
+        "cordova-admob": "4.1.11"
     }
 }

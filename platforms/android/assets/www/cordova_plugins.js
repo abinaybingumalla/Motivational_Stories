@@ -103,6 +103,23 @@ module.exports = [
             "cordova.plugins.notification.local.core",
             "plugin.notification.local.core"
         ]
+    },
+    {
+        "file": "plugins/cordova-connectivity-monitor/www/connectivity.js",
+        "id": "cordova-connectivity-monitor.connectivity",
+        "pluginId": "cordova-connectivity-monitor",
+        "clobbers": [
+            "window.connectivity"
+        ]
+    },
+    {
+        "file": "plugins/cordova-admob/www/admob.js",
+        "id": "cordova-admob.AdMobAds",
+        "pluginId": "cordova-admob",
+        "clobbers": [
+            "window.admob",
+            "window.tappx"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -113,7 +130,9 @@ module.exports.metadata =
     "cordova-plugin-x-socialsharing": "5.0.10",
     "cordova-plugin-tts": "0.2.3",
     "cordova-plugin-app-event": "1.2.0",
-    "de.appplant.cordova.plugin.local-notification": "0.8.4"
+    "de.appplant.cordova.plugin.local-notification": "0.8.4",
+    "cordova-connectivity-monitor": "1.2.2",
+    "cordova-admob": "4.1.11"
 }
 // BOTTOM OF METADATA
 });

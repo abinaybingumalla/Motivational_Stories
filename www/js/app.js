@@ -9,7 +9,7 @@ angular.module('motivation', ['ionic', 'ngCordova', 'motivation.controllers', 'm
     $ionicConfigProvider.scrolling.jsScrolling(true);
 })
 
-.run(function ($ionicPlatform, $rootScope, $cordovaLocalNotification, $ionicLoading, $timeout) {
+.run(function ($ionicPlatform, $rootScope, $cordovaLocalNotification, $ionicLoading, $timeout, $localStorage) {
     $ionicPlatform.ready(function () {
         if (window.cordova && window.cordova.plugins.Keyboard) {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -24,22 +24,28 @@ angular.module('motivation', ['ionic', 'ngCordova', 'motivation.controllers', 'm
         if (window.StatusBar) {
             StatusBar.styleDefault();
         }
+        $rootScope.fields = {};
+        var dat = $localStorage.getObject('notifychecked', 'true');
 
-        var now = new Date().getTime();
-        _5_sec_from_now = new Date(now + 1.5 * 60 * 60 * 1000);
-        $cordovaLocalNotification.schedule({
-            title: "Your Daily Dose is Ready",
-            text: "Let's Begin ...",
-            at: _5_sec_from_now,
-            every: "day",
-            icon: "platforms/android/res/drawable-mdpi/icon.png",
-        }).then(function () {
-                //console.log('Added Favorite ');
+        $rootScope.fields.notifychecked = JSON.parse(dat);
 
-            },
-            function () {
-                //console.log('Failed to add Notification ');
-            });
+        if ($rootScope.fields.notifychecked) {
+            var now = new Date().getTime();
+            _5_sec_from_now = new Date(now + 1.5 * 60 * 60 * 1000);
+            $cordovaLocalNotification.schedule({
+                title: "Your Daily Dose is Ready",
+                text: "Let's Begin ...",
+                at: _5_sec_from_now,
+                every: "day",
+                icon: "platforms/android/res/drawable-mdpi/icon.png",
+            }).then(function () {
+                    //console.log('Added Favorite ');
+
+                },
+                function () {
+                    //console.log('Failed to add Notification ');
+                });
+        }
 
         $rootScope.$on("$cordovaLocalNotification:click", function (notification) {
             $ionicLoading.show({
@@ -51,7 +57,99 @@ angular.module('motivation', ['ionic', 'ngCordova', 'motivation.controllers', 'm
             var randomNum = Math.floor((Math.random() * (81 - 1)) + 1);
             window.location.href = 'file:///android_asset/www/index.html#app/list/' + randomNum;
         });
+
+
+
     });
+
+    setTimeout(function () {
+        $ionicPlatform.ready(function () {
+            var isAppForeground = true;
+
+            function initAds() {
+                if (admob) {
+                    var adPublisherIds = {
+
+                        android: {
+                            banner: "pub-8906170658779735",
+                            interstitial: "ca-app-pub-8906170658779735/1396227801"
+                        }
+                    };
+
+                    var admobid = (/(android)/i.test(navigator.userAgent)) ? adPublisherIds.android : adPublisherIds.ios;
+
+                    admob.setOptions({
+                        publisherId: admobid.banner,
+                        interstitialAdId: admobid.interstitial
+
+
+                    });
+
+                    registerAdEvents();
+
+                } else {
+                    alert('AdMobAds plugin not ready');
+                }
+            }
+
+            function onAdLoaded(e) {
+                if (isAppForeground) {
+                    if (e.adType === admob.AD_TYPE.INTERSTITIAL) {
+                        console.log("An interstitial has been loaded and autoshown. If you want to load the interstitial first and show it later, set 'autoShowInterstitial: false' in admob.setOptions() and call 'admob.showInterstitialAd();' here");
+                    } else if (e.adType === admob.AD_TYPE_BANNER) {
+                        console.log("New banner received");
+                    }
+                }
+            }
+
+            function onPause() {
+                if (isAppForeground) {
+                    admob.destroyBannerView();
+                    isAppForeground = false;
+                }
+            }
+
+            function onResume() {
+
+                if (!isAppForeground) {
+
+                    setTimeout(admob.requestInterstitialAd, 1000 * 60 * 5);
+                    isAppForeground = true;
+                }
+            }
+
+            // optional, in case respond to events
+            function registerAdEvents() {
+                document.addEventListener(admob.events.onAdLoaded, onAdLoaded);
+                document.addEventListener(admob.events.onAdFailedToLoad, function (e) {});
+                document.addEventListener(admob.events.onAdOpened, function (e) {});
+                document.addEventListener(admob.events.onAdClosed, function (e) {});
+                document.addEventListener(admob.events.onAdLeftApplication, function (e) {});
+                document.addEventListener(admob.events.onInAppPurchaseRequested, function (e) {});
+
+                document.addEventListener("pause", onPause, false);
+                document.addEventListener("resume", onResume, false);
+            }
+
+            function onDeviceReady() {
+                document.removeEventListener('deviceready', onDeviceReady, false);
+
+
+                initAds();
+
+
+
+                // display a banner at startup
+                // admob.createBannerView();
+
+                // request an interstitial
+                admob.requestInterstitialAd();
+            }
+
+            document.addEventListener("deviceready", onDeviceReady, false);
+
+        });
+    }, 1000 * 60 * 3);
 })
 
 .config(function ($stateProvider, $urlRouterProvider) {
@@ -127,6 +225,16 @@ angular.module('motivation', ['ionic', 'ngCordova', 'motivation.controllers', 'm
             'menuContent': {
                 templateUrl: 'templates/intresting.html',
                 controller: 'InterestingController'
+            }
+        }
+    })
+
+    .state('app.settings', {
+        url: '/settings',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/settings.html',
+
             }
         }
     })

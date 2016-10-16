@@ -36,10 +36,16 @@
         },
         "de.appplant.cordova.plugin.local-notification": {
             "PACKAGE_NAME": "com.ionicframework.story371955"
+        },
+        "cordova-admob": {
+            "PACKAGE_NAME": "com.ionicframework.story371955"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-app-event": {
+            "PACKAGE_NAME": "com.ionicframework.story371955"
+        },
+        "cordova-connectivity-monitor": {
             "PACKAGE_NAME": "com.ionicframework.story371955"
         }
     }
